@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <title>Student Grade Tracker</title>
+</head>
+<body>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+        }
+        
+        header ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        header li {
+            margin-left: 20px;
+        }
+        
+        header a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        header a:hover {
+            text-decoration: underline;
+        }
+        
+        main {
+            padding: 20px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        
+
+    </style>
+    <header>
+        <nav>
+            <ul>
+                {% if user.is_authenticated %}
+                    <li>Welcome, {{ user.username }}!</li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav> 
+    </header>
+
+    {% for message in messages %}
+    <p>{{ message }}</p>
+{% endfor %}
+
+    <main>
+        <h1>Welcome to the Student Grade Tracker</h1>
+
+        <h3>Add your Grade on subjects</h3>
+        <a href="{% url 'add_grade' %}">Add Yours Grade</a>
+
+
+        {% if user.is_authenticated %}
+            <h2>Students</h2>
+            <ul>
+                {% for student in students %}
+                    <li>
+                        {{ student.name }} - 
+                        <a href="{% url 'student_report' student.id %}">View Report</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <h3>Please register or log in to track grades.</h3>
+        {% endif %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Student Grade Tracker. All rights reserved.</p>
+    </footer>
+</body>
+</html>

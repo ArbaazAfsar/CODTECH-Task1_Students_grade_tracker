@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Report</title>
+</head>
+<body>
+    <h1>Report for {{ student.name }}</h1>
+    <h2>Email: {{ student.email }}</h2>
+
+    <h3>Grades:</h3>
+    <ul>
+        {% for grade in grades %}
+            <li>{{ grade.subject.name }}: {{ grade.grade }}</li>
+        {% empty %}
+            <li>No grades available.</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Average Grade: {{ average }}</h3>
+    <h3>Letter Grade: {{ letter_grade }}</h3>
+    <h3>GPA: {{ gpa }}</h3>
+</body>
+</html>
+
