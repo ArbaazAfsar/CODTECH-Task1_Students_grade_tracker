@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Student Rankings{% endblock %}
+
+{% block content %}
+<main class="container my-5">
+    <!-- Page Header -->
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">🏆 Student Rankings</h1>
+        <p class="lead text-muted">View students ranked by their total grades, percentage, and GPA.</p>
+    </div>
+
+    {% if students %}
+        <!-- Ranking Table -->
+        <div class="table-responsive shadow-sm">
+            <table class="table table-hover table-striped table-bordered align-middle">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th scope="col" class="text-center">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Total Marks</th>
+                        <th scope="col">Percentage</th>
+                        <th scope="col">GPA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr class="text-center">
+                        <td><span class="badge bg-secondary fs-6">{{ forloop.counter }}</span></td>
+                        <td class="fw-bold">{{ student.name }}</td>
+                        <td>{{ student.total_grades|default:"0" }}</td>
+                        <td class="text-primary">{{ student.percentage|floatformat:2 }}%</td>
+                        <td>
+                            <span 
+                                class="badge 
+                                    {% if student.gpa == 4.0 %}bg-success
+                                    {% elif student.gpa >= 3.0 %}bg-info
+                                    {% elif student.gpa >= 2.0 %}bg-warning
+                                    {% else %}bg-danger{% endif %}">
+                                {{ student.gpa }}
+                            </span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <!-- No Students Message -->
+        <div class="alert alert-info text-center" role="alert">
+            <i class="bi bi-exclamation-circle"></i> No students available to rank.
+        </div>
+    {% endif %}
+</main>
+{% endblock %}

@@ -13,11 +13,19 @@ def register(request):
             user = form.save()
 
             # Create the associated Student instance
-            student = Student.objects.create(
-                user=user,
-                name=form.cleaned_data['name'],
-                email=form.cleaned_data['email']
-            )
+            if form['name'] is not None:
+                student = Student.objects.create(
+                    user=user,
+                    name=form.cleaned_data['name'],
+                    email=form.cleaned_data['email']
+                )
+            else:
+                    student = Student.objects.create(
+                    user=user,
+                    name=form.cleaned_data['username'],
+                    email=form.cleaned_data['email']
+                )
+                
             # Log the user in after registration
             login(request, user)
             messages.success(request, "Registration successful! Please log in.")

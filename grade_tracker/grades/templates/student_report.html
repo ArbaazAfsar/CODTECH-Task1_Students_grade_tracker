@@ -1,26 +1,108 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Report</title>
-</head>
-<body>
-    <h1>Report for {{ student.name }}</h1>
-    <h2>Email: {{ student.email }}</h2>
+{% extends 'base.html' %}
 
-    <h3>Grades:</h3>
-    <ul>
-        {% for grade in grades %}
-            <li>{{ grade.subject.name }}: {{ grade.grade }}</li>
-        {% empty %}
-            <li>No grades available.</li>
-        {% endfor %}
-    </ul>
 
-    <h3>Average Grade: {{ average }}</h3>
-    <h3>Letter Grade: {{ letter_grade }}</h3>
-    <h3>GPA: {{ gpa }}</h3>
-</body>
-</html>
+{% block title %}Student Report{% endblock %}
 
+{% block content %}
+<div class="container my-5">
+    <!-- Page Header -->
+    <div class="text-center mb-4">
+        <h1 class="display-5 fw-bold">Student Report</h1>
+    </div>
+
+<!-- Student Information -->
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-header text-white text-center" style="background-color: #4A5568;">
+        <h2 class="h4 mb-0 fw-bold">👩‍🎓 Student Information</h2>
+    </div>
+    <div class="card-body bg-light">
+        <div class="row align-items-center">
+            <!-- Name -->
+            <div class="col-md-6 mb-3">
+                <div class="p-3 border rounded bg-white shadow-sm">
+                    <h5 class="text-primary fw-bold">Name</h5>
+                    <p class="text-dark mb-0">{{ student.name }}</p>
+                </div>
+            </div>
+            <!-- Email -->
+            <div class="col-md-6 mb-3">
+                <div class="p-3 border rounded bg-white shadow-sm">
+                    <h5 class="text-success fw-bold">Email</h5>
+                    <p class="text-dark mb-0">{{ student.email }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Grades Section -->
+<div class="card mb-4 shadow-sm border-0">
+    <div class="card-header text-white text-center" style="background-color: #1e3a8a;">
+        <h2 class="h4 mb-0 fw-bold">📚 Grades</h2>
+    </div>
+    <div class="card-body bg-light">
+        <ul class="list-group list-group-flush">
+            {% for grade in grades %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="mb-0 text-primary">{{ grade.subject.name }}</h5>
+                    </div>
+                    <span class="badge bg-success rounded-pill">{{ grade.grade }}</span>
+                </li>
+            {% empty %}
+                <li class="list-group-item text-center text-muted">
+                    <i class="bi bi-exclamation-circle"></i> No grades available.
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+<!-- Summary Section -->
+<div class="card shadow-sm mb-4 border-0">
+    <div class="card-header text-white" style="background-color: #065F46;">
+        <h2 class="h4 mb-0 text-center">📋 Summary</h2>
+    </div>
+    <div class="card-body bg-light">
+        <div class="row align-items-center">
+            <!-- Total Marks -->
+            <div class="col-md-4 text-center mb-3">
+                <div class="p-3 border rounded bg-white shadow-sm">
+                    <h5 class="text-info fw-bold">Total Marks</h5>
+                    <p class="h5 text-dark">{{ total_grades }} / {{ total_possible_marks }}</p>
+                </div>
+            </div>
+            
+            <!-- Percentage -->
+            <div class="col-md-4 text-center mb-3">
+                <div class="p-3 border rounded bg-white shadow-sm">
+                    <h5 class="text-primary fw-bold">Percentage</h5>
+                    <p class="h5 text-dark">{{ percentage }}%</p>
+                </div>
+            </div>
+            
+            <!-- Letter Grade -->
+            <div class="col-md-4 text-center mb-3">
+                <div class="p-3 border rounded bg-white shadow-sm">
+                    <h5 class="text-success fw-bold">Letter Grade</h5>
+                    <p class="h5 text-dark">{{ letter_grade }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row align-items-center mt-3">
+            <!-- GPA -->
+            <div class="col-md-4 offset-md-4 text-center mb-3">
+                <div class="p-3 border rounded bg-white shadow-sm">
+                    <h5 class="text-warning fw-bold">GPA</h5>
+                    <p class="h5 text-dark">{{ gpa }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+<br>
+<br>
+{% endblock %}

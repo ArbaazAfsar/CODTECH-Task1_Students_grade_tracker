@@ -1,36 +1,37 @@
-<!-- add_grade.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'base.html' %}
+
+{% block title %}
     <title>Add Grade</title>
-</head>
-<body>
-    <h1>Add Grade</h1>
-    
-    <!-- Form for adding grade -->
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Add Grade</button>
-    </form>
-    
-    <hr>
-    
- 
-    {% if grades  %}
-    <h2>Your Grades</h2>
-        <ul>
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="text-center text-primary mb-4">Add Grade</h1>
+
+        <!-- Form for adding grade -->
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-primary">Add Grade</button>
+        </form>
+
+        <hr>
+
+        {% if grades %}
+        <h2>Your Grades</h2>
+        <ul class="list-group">
             {% for grade in grades %}
-                <li>{{ grade.subject.name }}: {{ grade.grade }}</li>
+                <li class="list-group-item">{{ grade.subject.name }}: {{ grade.grade }}</li>
             {% endfor %}
         </ul>
-    {% else %}
-        <p>No grades added yet.</p>
-    {% endif %}
+        {% else %}
+        <p class="text-muted">No grades added yet.</p>
+        {% endif %}
 
-    <a href="{% url 'student_report' student.id %}">View Report</a>
-    
-</body>
-</html>
+        <hr>
+        <a href="{% url 'student_report' student.id %}" class="btn btn-secondary">View Report</a>
+    </div>
+{% endblock %}
+
