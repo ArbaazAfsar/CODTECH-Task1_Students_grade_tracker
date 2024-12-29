@@ -104,5 +104,5 @@ The **Student Grade Tracker** is a web-based application designed to efficiently
 ### Steps  
 1. Clone the repository:  
    ```bash
-   git clone https://github.com/your-username/student-grade-tracker.git
+   git clone https://github.com/ArbaazAfsar/CODTECH-Task1_Students_grade_tracker.git
 
