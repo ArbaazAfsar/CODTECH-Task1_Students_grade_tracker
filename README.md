@@ -67,13 +67,6 @@ The **Student Grade Tracker** is a web-based application designed to efficiently
 - **Frontend:** HTML, CSS, JavaScript  
 - **Database:** SQLite (default)  
 
----
-
-## Future Enhancements  
-- Add data visualization tools for graphical reports.  
-- Include role-based access control for admins and users.  
-- Enable report export and import functionalities.  
-- Integrate AI-powered grade predictions.  
 
 ---
 
