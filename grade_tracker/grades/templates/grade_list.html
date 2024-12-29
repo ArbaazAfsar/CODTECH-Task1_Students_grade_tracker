@@ -5,22 +5,60 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Grade List</h1>
+<main class="container my-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center mb-4">Grade List</h1>
 
-    <!-- Search Form -->
-    <form class="d-flex ms-3" method="GET" action="{% url 'grade_list' %}">
-        {% csrf_token %}
-        <input class="form-control me-2" type="search" name="query" placeholder="Search by Student Name, Subject, or Grade" value="{{ form.query.value }}" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
+            <!-- Search Form -->
+            <form class="d-flex mb-4" method="GET" action="{% url 'grade_list' %}">
+                {% csrf_token %}
+                <input 
+                    class="form-control me-2" 
+                    type="search" 
+                    name="query" 
+                    placeholder="Search by Student Name, Subject, or Grade" 
+                    value="{{ form.query.value }}" 
+                    aria-label="Search">
+                <button class="btn btn-success" type="submit">Search</button>
+            </form>
 
-    <!-- Display Grades -->
-    <h2>Grades</h2>
-    <ul>
-        {% for grade in grades %}
-            <li>{{ grade.student.name }} - {{ grade.subject.name }}: {{ grade.grade }}</li>
-        {% empty %}
-            <li>No grades found matching your criteria.</li>
-        {% endfor %}
-    </ul>
+            <!-- Display Grades -->
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h5 mb-0">Grades</h2>
+                </div>
+                <div class="card-body p-0">
+                    {% if grades %}
+                        <table class="table table-striped table-bordered mb-0">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Student Name</th>
+                                    <th scope="col">Subject</th>
+                                    <th scope="col">Grade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for grade in grades %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ grade.student.name }}</td>
+                                    <td>{{ grade.subject.name }}</td>
+                                    <td>{{ grade.grade }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <div class="alert alert-info text-center m-3" role="alert">
+                            No grades found matching your criteria.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 {% endblock %}
+
