@@ -1,4 +1,4 @@
-# Student Grade Tracker (SSR)  
+# Student Grade Tracker  
 
 **Author**: Arbaaz Afsar  
 **Company**: Codtech IT Solution  
