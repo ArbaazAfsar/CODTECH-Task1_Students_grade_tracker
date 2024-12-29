@@ -17,11 +17,17 @@ The **Student Grade Tracker** is a web-based application designed to efficiently
 ## Features  
 
 ### 1. Public View (Before Login)  
+
+![Public View Screenshot](grade_tracker/project_screenshot/Screenshot%202024-12-29%20154619.png)
+
 - **Login and Register Buttons:** Easily accessible buttons for user authentication.  
 - **Student Ranks:** Displays a list of student ranks uploaded so far.  
 - **View Reports:** Allows anyone to view individual student reports by clicking on their rank.  
 
 ### 2. Registered User View (After Login)  
+
+![Dashboard Screenshot](grade_tracker/project_screenshot/Screenshot%202024-12-29%20155013.png)
+
 - **Dashboard:** Provides detailed account information and grade upload options.  
 - **Grade Upload:** Users can upload grades for multiple subjects.  
 - **Reports:**  
@@ -31,6 +37,9 @@ The **Student Grade Tracker** is a web-based application designed to efficiently
   - Subject-wise breakdown.  
 
 ### 3. Search Functionality  
+
+![Search Functionality Screenshot](grade_tracker/project_screenshot/Screenshot%202024-12-29%20193406.png)
+
 - Search students' data by:  
   - Name.  
   - Subject.  
@@ -44,21 +53,38 @@ The **Student Grade Tracker** is a web-based application designed to efficiently
 
 ## How It Works  
 
-1. **Registration and Login:**  
-   - New users can register and create accounts.  
-   - Existing users log in to access their data.  
+### 1. Registration and Login  
 
-2. **Data Upload and Management:**  
-   - Upload grades for each subject.  
-   - View or edit the uploaded data anytime.  
+#### Login Page  
+![Login Page Screenshot](grade_tracker/project_screenshot/Screenshot%202024-12-29%20154744.png)
 
-3. **Reporting:**  
-   - Automatic grade calculations.  
-   - Detailed academic performance reports.  
-   - Easy access to GPA and letter grades.  
+#### Register Page  
+![Register Page Screenshot](grade_tracker/project_screenshot/Screenshot%202024-12-29%20154756.png)
 
-4. **Search Functionality:**  
-   - Quickly locate student data based on filters.  
+- **New Users:** Register and create accounts.  
+- **Existing Users:** Log in to access their data.  
+
+### 2. Data Upload and Management  
+
+![Grade Upload Screenshot](grade_tracker/project_screenshot/Screenshot%202024-12-29%20154641.png)
+
+- Upload grades for each subject.  
+- View or edit the uploaded data anytime.  
+
+### 3. Reporting  
+
+#### Detailed Reports  
+![Report Screenshot](grade_tracker/project_screenshot/Screenshot%202024-12-29%20154709.png)
+
+- Automatic grade calculations.  
+- Detailed academic performance reports.  
+- Easy access to GPA and letter grades.  
+
+### 4. Search Functionality  
+
+![Search Screenshot](grade_tracker/project_screenshot/Screenshot%202024-12-29%20193406.png)
+
+- Quickly locate student data based on filters.  
 
 ---
 
@@ -67,7 +93,6 @@ The **Student Grade Tracker** is a web-based application designed to efficiently
 - **Frontend:** HTML, CSS, JavaScript  
 - **Database:** SQLite (default)  
 
-
 ---
 
 ## Installation  
@@ -75,4 +100,9 @@ The **Student Grade Tracker** is a web-based application designed to efficiently
 ### Prerequisites  
 - Python installed on your system.  
 - Django installed via pip.  
+
+### Steps  
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/your-username/student-grade-tracker.git
 
